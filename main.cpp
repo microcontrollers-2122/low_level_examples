@@ -42,6 +42,11 @@ void timer_start(){
     TIM7->CR1 |= 1;
 }
 
+void timer_wait(){
+    while(!(TIM7->SR & 1)){}
+    TIM7->SR = 0;
+}
+
 int main()
 {
     led_init();
@@ -52,6 +57,6 @@ int main()
         
         led_toggle();
         //wait here
-
+        timer_wait();
     }
 }
