@@ -37,13 +37,21 @@ void led_toggle(){
     
 }
 
+void timer_start(){
+    //enable timer
+    TIM7->CR1 |= 1;
+}
+
 int main()
 {
     led_init();
     timer_init();
+    timer_start();
 
     while(true){
+        
         led_toggle();
         //wait here
+
     }
 }
